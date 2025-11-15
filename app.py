@@ -14,6 +14,11 @@ def button_event():
 # ----- Funções dos Botoes -------  
 def adicionarRemedio():
     print("Botão 'Adicionar um Remédio' pressionado")
+    window_adicionar = ctk.CTkToplevel(app)
+    window_adicionar.title("Adicionando um novo remédio")
+    window_adicionar.geometry("350x350")
+    window_adicionar.grab_set()
+
 
 def verRemedio():
     print("Botão 'Ver Remédio' pressionado ")
@@ -24,8 +29,37 @@ def ExcluirRemedio():
 
 fontePrincipal = ("Inter", 24, "bold")
 fonteBotoes = ("Inter", 16)
+fonteCampos = ("Inter", 14)
 
-#--------------------------------------------
+#--------------- Widgets dentro da nova janela ----- 
+
+#------- Lista de Hora e Minuto ---------- 
+
+listaHoras = [f"{h:02d}" for h in range(24)] 
+listaMinutos = [f"{m:02d}" for m in range(60)]
+
+
+
+def salvarRemedio(janela_para_fechar, entryNome, entryDosagem, comboboxHora, comboboxMinuto ):
+    nome = entryNome.get()
+    dosagem = entryDosagem.get()
+
+    hora = comboboxHora.get()
+    minuto = comboboxMinuto.get()
+
+    horarioCompleto = f"{hora}:{minuto}"
+
+    print("--- Novo Remédio Salvo! --- ")
+    print(f"Nome: {nome}")
+    print(f"Dosagem: {dosagem}")
+    print(f"Horário: {horarioCompleto}")
+
+    janela_para_fechar.destroy()
+
+
+
+
+
 
 #Linha inicial do programa 
 
